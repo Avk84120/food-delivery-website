@@ -39,7 +39,7 @@ function filter(category){
                 <Card name={item.food_name} image={item.food_image} price={item.price} id={item.id} type={item.food_type} />
             ))}
       </div>
-      <div className={`w-[40vw] h-[100%] fixed top-0 right-0 bg-white shadow-xl p-6 transition-all duration-500 ${showCart?"translate-x-0":"translate-x-full"}`}>
+      <div className={`w-full md:w-[40vw] h-[100%] fixed top-0 right-0 bg-white shadow-xl p-6 transition-all duration-500 ${showCart?"translate-x-0":"translate-x-full"}`}>
             <header className='w-[100%] flex justify-between items-center  '>
                 <span className='text-green-400 text-[18px] font-semibold '>Order Items</span>
                 <RxCross1 className='text-green-400 text-[18px] font-semibold w-[30px] h-[30px] cursor-pointer hover:text-gray-600
