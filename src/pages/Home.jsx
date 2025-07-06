@@ -21,6 +21,8 @@ function filter(category){
     }
 }
 
+
+
 let items = useSelector(state=>state.cart)
 let subtotal =items.reduce((total,item)=>total+item.qty*item.price,0)
 let deliveryFee=20;
@@ -45,9 +47,15 @@ let total=Math.floor(subtotal+deliveryFee+taxes)
              </div>:null}
       
       <div className='w-full flex flex-wrap gap-5 px-5 justify-center items-center pt-8 pb-8 '>
-            {cate.map((item)=>(
+
+        {cate.length>1?cate.map((item)=>(
                 <Card name={item.food_name} image={item.food_image} price={item.price} id={item.id} type={item.food_type} />
-            ))}
+            ))
+            :
+            <div className='text-center text-2xl text-green-500 font-semibold pt-5'>
+              No dish found...
+            </div>}
+            
       </div>
       <div className={`w-full md:w-[40vw] h-[100%] fixed top-0 right-0 bg-white shadow-xl p-6
          transition-all duration-500 fles flex-col items-center overflow-auto ${showCart?"translate-x-0":"translate-x-full"} `}>
@@ -83,7 +91,10 @@ let total=Math.floor(subtotal+deliveryFee+taxes)
                   <span className='text-2xl text-gray-600 font-semibold'>Total</span>
                   <span className='text-green-400 font-semibold text-2xl'>Rs {total}/-</span>
                 </div>
-                <button className='w-full items-center p-3 bg-green-500 text-white hover:bg-green-400 rounded-lg transition-all'>Place Order</button>
+                <button className='w-full items-center p-3 bg-green-500 text-white
+                 hover:bg-green-400 rounded-lg transition-all' onClick={()=>{
+                  toast.success("Order Placed..")
+                 }}>Place Order</button>
             </div>
             </>
             : 
